@@ -4,14 +4,14 @@ import com.codeborne.selenide.SelenideElement;
 import ru.lanit.at.utils.web.annotations.Name;
 import ru.lanit.at.utils.web.pagecontext.WebPage;
 
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.$;
 
 @Name(value = "Google")
 public class GooglePage extends WebPage {
 
     @Name("поле поиска")
-    private SelenideElement searchField = $x("//input[@name='q']");
+    private SelenideElement searchField = $("textarea[title='Поиск']");
 
     @Name("кнопка поиска")
-    private SelenideElement searchButton = $x("//input[@value='Поиск в Google']");
+    private SelenideElement searchButton = $("input[aria-label='Поиск в Google']");
 }

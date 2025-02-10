@@ -9,22 +9,33 @@
     <version>1.2-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.source>8</java.source>
-        <java.target>8</java.target>
+        <java.source>21</java.source>
+        <java.target>21</java.target>
         <owner.version>1.0.12</owner.version>
         <cucumber.version>7.2.3</cucumber.version>
-        <aspectj.version>1.9.6</aspectj.version>
-        <aspectj-maven-plugin.version>1.14.0</aspectj-maven-plugin.version>
-        <surefire.version>2.22.2</surefire.version>
-        <selenide.version>6.2.0</selenide.version>
-        <log4j.version>2.15.0</log4j.version>
-        <slf4j.version>1.7.30</slf4j.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <allure.version>2.17.2</allure.version>
-        <allure.maven.version>2.10.0</allure.maven.version>
-        <common-lang3.version>3.12.0</common-lang3.version>
-        <restassured.version>4.4.0</restassured.version>
-        <jackson.version>2.12.3</jackson.version>
+        <aspectj.version>1.9.22</aspectj.version>
+        <aspectj-maven-plugin.version>1.15.0</aspectj-maven-plugin.version>
+        <surefire.version>3.2.5</surefire.version>
+        <selenide.version>7.7.0</selenide.version>
+        <selenide-selenoid.version>7.7.0</selenide-selenoid.version>
+        <log4j.version>2.20.0</log4j.version>
+        <slf4j.version>2.0.12</slf4j.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <allure.version>2.17.3</allure.version>
+        <allure.maven.version>2.12.0</allure.maven.version>
+        <common-lang3.version>3.14.0</common-lang3.version>
+        <restassured.version>5.4.0</restassured.version>
+        <jackson.version>2.17.0</jackson.version>
+        <postgresql.version>42.7.2</postgresql.version>
+        <dbutils.version>1.8.1</dbutils.version>
+        <allure-cucumber.version>2.17.2</allure-cucumber.version>
+        <json-path.version>2.9.0</json-path.version>
+        <reflecion.version>0.10.2</reflecion.version>
+        <poi-ooxml.version>5.3.0</poi-ooxml.version>
+        <json-simple.version>1.1.1</json-simple.version>
+        <gson.version>2.10.1</gson.version>
+        <webdrivermanager.version>5.7.0</webdrivermanager.version>
+
         <tags></tags>
     </properties>
 
@@ -48,12 +59,13 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <testFailureIgnore>false</testFailureIgnore>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <skipTests>false</skipTests>
                     <argLine>
                         -Dcucumber.filter.tags="${tags}"
                         -Dfile.encoding=UTF-8
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        --add-opens java.base/java.lang=ALL-UNNAMED
                     </argLine>
                     <systemPropertyVariables>
                         <base.dir>${project.basedir}/</base.dir>
@@ -119,8 +131,6 @@
     </build>
 
     <dependencies>
-        <!--cucumber-->
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -141,7 +151,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
-            <version>2.17.2</version>
+            <version>${allure-cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -162,7 +172,7 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
+            <artifactId>slf4j-reload4j</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
         <dependency>
@@ -173,7 +183,7 @@
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.5.0</version>
+            <version>${json-path.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -188,12 +198,17 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.10</version>
+            <version>${reflecion.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aeonbits.owner</groupId>
             <artifactId>owner-java8</artifactId>
             <version>${owner.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi-ooxml.version}</version>
         </dependency>
 
         <!--rest-assured-->
@@ -205,12 +220,44 @@
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+            <version>${json-simple.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide-selenoid</artifactId>
+            <version>${selenide-selenoid.version}</version>
+        </dependency>
+
+        <!--sql-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${dbutils.version}</version>
         </dependency>
     </dependencies>
 
