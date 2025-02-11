@@ -1,5 +1,6 @@
 package ru.lanit.at.utils.web.properties;
 
+import com.google.errorprone.annotations.Keep;
 import org.aeonbits.owner.Config;
 
 
@@ -36,5 +37,13 @@ public interface Configurations extends Config {
     @Key("enableLog")
     @DefaultValue("false")
     boolean getEnableLog();
+
+    @Key("login.lkor")
+    @DefaultValue("false")
+    String getLoginLkor();
+
+    @Key ("password.lkor")
+    @DefaultValue("false")
+    String getPasswordLkor();
 
 }
