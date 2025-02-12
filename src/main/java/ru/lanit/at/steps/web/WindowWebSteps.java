@@ -6,6 +6,8 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Когда;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import ru.lanit.at.actions.WebActions;
 import ru.lanit.at.utils.selenide.DriverManager;
 import ru.lanit.at.utils.web.pagecontext.PageManager;
@@ -99,5 +101,8 @@ public class WindowWebSteps extends AbstractWebSteps {
         pageManager.setCurrentPage(page);
     }
 
+    @И("согласиться с модальным окном")
+    public void acceptModalWindow(){
 
+    }
 }

@@ -8,12 +8,14 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
+import org.openqa.selenium.chrome.ChromeOptions;
 import ru.lanit.at.utils.ErrorMessage;
 import ru.lanit.at.utils.Stand;
 import ru.lanit.at.utils.web.pagecontext.Environment;
 import ru.lanit.at.utils.web.properties.Configurations;
 import ru.lanit.at.utils.web.properties.WebConfigurations;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -49,8 +51,11 @@ public class DriverManager {
             options.put("enableVNC", cf.getEnableVNC());
             options.put("enableVideo", cf.getEnableVideo());
             options.put("enableLog", cf.getEnableLog());
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addExtensions(new File("C:\\Users\\Lenovo\\IdeaProjects\\Quick_Start_BDD\\src\\main\\resources\\POMEKHCHNGAOOFFDADFJNGHFKAEIPOBA_2_3_0_1.crx"));
             Configuration.browserCapabilities.setCapability("selenoid:options", options);
             Configuration.browserCapabilities.setCapability("sessionTimeout", "30m");
+            Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY,chromeOptions);
             Configuration.fileDownload = FileDownloadMode.FOLDER;
         } else {
             switch (cfg.webDriverBrowserName()) {
@@ -68,7 +73,9 @@ public class DriverManager {
                 }
             }
         }
-
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addExtensions(new File("src/main/resources/POMEKHCHNGAOOFFDADFJNGHFKAEIPOBA_2_3_0_1.crx"));
+        Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY,chromeOptions);
         Configuration.browser = cfg.webDriverBrowserName();
         Configuration.browserSize = cfg.webDriverBrowserSize();
         Configuration.browserVersion = cfg.webDriverVersion();
@@ -80,6 +87,7 @@ public class DriverManager {
         Configuration.pollingInterval = cfg.pollingTimeoutMs();
         Configuration.reportsFolder = System.getProperty("selenide.report.folder");
         Configuration.downloadsFolder = System.getProperty("selenide.download.folder");
+
         Environment.initPages(cfg.pagesPackage());
     }
 
