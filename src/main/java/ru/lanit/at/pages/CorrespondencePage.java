@@ -20,4 +20,19 @@ public class CorrespondencePage extends WebPage {
     private SelenideElement statusPreparing = $x("//div[contains(text(),\"Подготовка\")]");
     @Name("сферы регулирования")
     private SelenideElement spheres = $x("//span[text() = \"Сферы регулирования\"]");
+    @Name("опция Сообщение")
+    private SelenideElement optionMessage = $x("//div[contains(text(),\"Сообщение\")]");
+    @Name("дата")
+    private SelenideElement dateField = $x("//input[@* = \"Дата\"]");
+    @Name("номер")
+    private SelenideElement numberField = $x("//input[@* = \"Номер\"]");
+    @Name("тема")
+    private SelenideElement topicField = $x("//input[@* = \"Тема\"]");
+    @Name("содержание")
+    private SelenideElement content = $x("//textarea");
+    @Name("уведомление")
+    private SelenideElement notification = $x("//div[text()=\"Информационное сообщение успешно создано!\"]");
+    @Name("адресаты")
+    private SelenideElement organizations = $x("//div[contains(text(),\"Адресаты\")]");
 }
+
