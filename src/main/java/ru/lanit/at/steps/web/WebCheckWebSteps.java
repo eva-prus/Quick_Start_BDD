@@ -1,5 +1,6 @@
 package ru.lanit.at.steps.web;
 
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
@@ -7,6 +8,9 @@ import ru.lanit.at.actions.WebChecks;
 import ru.lanit.at.utils.web.pagecontext.PageManager;
 
 import java.util.List;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class WebCheckWebSteps extends AbstractWebSteps {
 
@@ -62,6 +66,11 @@ public class WebCheckWebSteps extends AbstractWebSteps {
     public void waitUntilTextAppearOnPage(String text, int timeoutSeconds) {
         WebChecks.textVisibleOnPage(text, timeoutSeconds);
         LOGGER.info("на странице '{}' имеется текст '{}'", pageManager.getCurrentPage().name(), text);
+    }
+
+    @Когда("подождать доступности элемента с текстом {string}")
+    public void waitUntilElementWithTextEnabled(String text){
+        WebChecks.elementEnablesOnPage($(Selectors.byText(text)),5);
     }
 
     /**

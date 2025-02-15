@@ -15,4 +15,6 @@ public class SudirPage extends WebPage {
 
     @Name("Нужная электронная подпись")
     private SelenideElement ECP = $x("//*[contains(text(),\"08.03.2025\")]");
+    @Name("Региональная электронная подпись")
+    private SelenideElement ECPRegion = $x("//*[contains(text(),\"23.03.2026\")]");
 }
