@@ -51,11 +51,8 @@ public class DriverManager {
             options.put("enableVNC", cf.getEnableVNC());
             options.put("enableVideo", cf.getEnableVideo());
             options.put("enableLog", cf.getEnableLog());
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addExtensions(new File("C:\\Users\\Lenovo\\IdeaProjects\\Quick_Start_BDD\\src\\main\\resources\\POMEKHCHNGAOOFFDADFJNGHFKAEIPOBA_2_3_0_1.crx"));
             Configuration.browserCapabilities.setCapability("selenoid:options", options);
             Configuration.browserCapabilities.setCapability("sessionTimeout", "30m");
-            Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY,chromeOptions);
             Configuration.fileDownload = FileDownloadMode.FOLDER;
         } else {
             switch (cfg.webDriverBrowserName()) {
