@@ -60,7 +60,6 @@ public class ApiRequest {
         setBodyFromFile();
         addLoggingListener();
     }
-
     public Response getResponse() {
         return response;
     }
@@ -73,6 +72,7 @@ public class ApiRequest {
             builder.addHeader(k, v);
         });
     }
+
 
     /**
      * Сеттит query-параметры
