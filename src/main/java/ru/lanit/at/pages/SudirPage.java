@@ -11,7 +11,5 @@ public class SudirPage extends WebPage {
     private SelenideElement ECPbutton = $x("//button[@class=\"favorite2 btn-meth meth-int logo-count-1 meth-count-1 meth-x509 item formFooter__button formFooter__button--decoration\"]");
 
     @Name("Нужная электронная подпись")
-    private SelenideElement ECP = $x("//*[contains(text(),\"08.03.2025\")]");
-    @Name("Региональная электронная подпись")
-    private SelenideElement ECPRegion = $x("//*[contains(text(),\"23.03.2026\")]");
+    private SelenideElement ECP = $x("//*[contains(text(),\"17.05.2026\")]");
 }

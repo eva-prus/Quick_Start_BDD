@@ -2,7 +2,7 @@
 @registryOfRegulatedInfrastructure
 Функционал: Реестр регулируемой инфраструктуры
 
-  Сценарий: Открытие страницы https://lkro.tarif.cdemo.pro/, вход при помощи ЭП,
+  Сценарий: Открытие страницы https://lkro.tarif.cdemo.pro/, вход при помощи ЭП, вход в РРИ
     * шаг № "1"
     * открыть url "https://lkro.tarif.cdemo.pro/"
     * инициализация страницы "Внутренняя страница СУДИР"
